@@ -38,9 +38,21 @@ fileInput.addEventListener("change", e => {
     /* console.log(file);  */// verifica in console
     /* Condizione per fermare il programma in caso di assenza QR Code */
     if (!file) return;
-    let formData = new FormData(); // Crea un nuovo oggetto Form Data
-    formData.append("file", file) // Appendo al mio nuovo oggetto il file caricato da utente
-    fetchRequest(formData, file) // invoco la mia function con parametro formData
+    /* Verifica per controllare se il file è un'immagine */
+    if (!file.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+        console.log("Questa non è un'immagine");
+        wrapper.classList.remove("active")
+        infoText.innerText = "This is not an image!"
+    } else {
+        console.log("Questa in effetti è un'immagine");
+        let formData = new FormData(); // Crea un nuovo oggetto Form Data
+        formData.append("file", file) // Appendo al mio nuovo oggetto il file caricato da utente
+        fetchRequest(formData, file) // invoco la mia function con parametro formData        
+    }
+
+
+
+
 })
 
 copyBtn.addEventListener("click", () => {
