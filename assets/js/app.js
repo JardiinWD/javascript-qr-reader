@@ -2,7 +2,7 @@ const wrapper = document.querySelector(".wrapper") // Pesco il mio div principal
 form = document.querySelector("form") // Pesco il mio form, la zona del mio QR Code
 fileInput = form.querySelector("input") // Con questo pesco l'input type file presente nel mio form
 infoText = form.querySelector("p"); // Questa è la descrizione del QR Code
-
+copyBtn = wrapper.querySelector(".copy") // Questa è la classe del copy Text button
 
 
 /**
@@ -37,6 +37,15 @@ fileInput.addEventListener("change", e => {
     formData.append("file", file) // Appendo al mio nuovo oggetto il file caricato da utente
     fetchRequest(formData, file) // invoco la mia function con parametro formData
 })
+
+copyBtn.addEventListener("click", () => {
+    /* console.log("Sono il pulsante copy"); */
+    let text = wrapper.querySelector("textarea").textContent // Prendo il valore della textarea, ovvero il valore del QR
+    navigator.clipboard.writeText(text) // Salvo la variabile di testo nella clipboard, ovvero ne prendo il valore
+})
+
+
+
 
 /* 
 Aggiunto un evento al mio form, che replica praticamente 
