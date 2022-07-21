@@ -26,6 +26,11 @@ body {
     background: #0b85ff;
     padding: 30px 30px 35px;
     border-radius: 7px;
+    transition: height 0.2s ease;
+}
+
+.wrapper.active {
+    height: 525px;
 }
 
 /*#region Utilities dei dettagli */
@@ -33,6 +38,12 @@ body {
     margin-top: 25px;
     opacity: 0;
     pointer-events: none;
+}
+
+.wrapper.active .details {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s 0.05s ease;
 }
 
 /* Text Area */
@@ -86,14 +97,22 @@ body {
     justify-content: center;
 }
 
+/* Cambio altezza del form dopo scatenato active */
+.wrapper.active form {
+    height: 225px;
+    pointer-events: none;
+}
+/* Immagine del form */
+.wrapper.active form img{
+    display: block;
+}
+/* Immagine del form */
 form img {
     display: none;
     max-width: 148px;
 }
 
-form .content {
-    /* display: none; */
-}
+
 
 /* Icona */
 form .content i {
@@ -105,6 +124,10 @@ form .content p {
     color: #0b85ff;
     font-size: 16px;
     margin-top: 15px;
+}
+/* Contenuto */
+.wrapper.active form .content {
+    display: none;
 }
 
 

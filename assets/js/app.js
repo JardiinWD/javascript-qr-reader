@@ -1,6 +1,9 @@
 const wrapper = document.querySelector(".wrapper") // Pesco il mio div principale, ovvero il wrapper
 form = document.querySelector("form") // Pesco il mio form, la zona del mio QR Code
 fileInput = form.querySelector("input") // Con questo pesco l'input type file presente nel mio form
+infoText = form.querySelector("p"); // Questa è la descrizione del QR Code
+
+
 
 /**
  * Funzione per far leggere il QR Code immesso dall'utente
@@ -8,14 +11,19 @@ fileInput = form.querySelector("input") // Con questo pesco l'input type file pr
  * @param {object} formData 
  */
 function fetchRequest(formData) {
-    /* nel fetch faccio la richiesta al QR Server API passando il mio formData come body e attendendo il responso */
+    /* Appendo a infoText la preparazione al QR Code */
+    infoText.innerHTML = "Scanning QR Code..."
+    /* nel fetch faccio la richiesta al QR Server API */
     fetch("http://api.qrserver.com/v1/read-qr-code/", {
-        method: "POST", body: formData
+        method: "POST", body: formData // richiesta con metodo post, utilizzo come body formData
     })
         /* In questo modo ottengo il responso, in formato json */
         .then(res => res.json()).then(result => {
-            /* Verifica in console log del risultato */
-            console.log(result);
+            result = result[0].symbol[0].data // Questo è il mio QR Code
+            console.log(result); // Verifica del risultato
+            infoText.innerHTML = "Upload QR Code to Scan"
+            console.log(result); /* Verifica in console log del risultato */
+            wrapper.classList.add("active") // al mio wrapper gli lascio, tramite classList la classe active
         })
 }
 
