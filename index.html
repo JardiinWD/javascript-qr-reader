@@ -7,9 +7,33 @@
     <title>Javascript QR Code Reader</title>
     <!-- Link a foglio di style -->
     <link rel='stylesheet' href='./assets/css/style.css'>
+    <!-- FontAwesome 6.1.1 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     
+    <div class="wrapper">
+        <!-- Form -->
+        <form action="#">
+            <!-- Immagine del QR va qui -->
+            <div></div>
+            <!-- Contenuto va qui -->
+            <div class="content">
+                <i class="fas fa-cloud-upload"></i>
+                <p>Upload QR Code to Scan</p>
+            </div>
+        </form>
+        <!-- Dettagli -->
+        <div class="details">
+            <!-- Area descrizione -->
+            <textarea disabled>Lorem ipsum dolor sit amet.</textarea>
+            <!-- Area per i buttons -->
+            <div class="buttons">
+                <button class="close">Close</button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Link a JS -->
     <script src='./assets/js/app.js'></script>
